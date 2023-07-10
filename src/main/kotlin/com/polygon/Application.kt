@@ -1,21 +1,17 @@
 package com.polygon
 
+import com.polygon.dao.DatabaseFactory
 import com.polygon.plugins.*
 import io.ktor.server.application.*
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
 
-fun main() {
-	embeddedServer(Netty, port = 8080, host = "0.0.0.0", module = Application::module)
-		.start(wait = true)
-}
+fun main(args: Array<String>) = EngineMain.main(args)
 
 fun Application.module() {
-	configureSockets()
+	configureAuthentication(environment.config)
+	DatabaseFactory.init(environment.config)
 	configureSerialization()
-	configureDatabases()
-	configureMonitoring()
-	configureHTTP()
-	configureSecurity()
-	configureRouting()
+	configureRouting(environment.config)
+	configureException()
 }
