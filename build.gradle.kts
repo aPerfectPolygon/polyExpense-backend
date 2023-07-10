@@ -1,9 +1,15 @@
-val ktor_version: String by project
-val kotlin_version: String by project
-val logback_version: String by project
-val postgres_version: String by project
-val h2_version: String by project
-val prometeus_version: String by project
+val ktorVersion: String by project
+val kotlinVersion: String by project
+val logbackVersion: String by project
+val postgresVersion: String by project
+val exposedVersion: String by project
+val h2Version: String by project
+val prometeusVersion: String by project
+val gsonVersion: String by project
+val hikaricpVersion: String by project
+val redisVersion: String by project
+val jbcryptVersion: String by project
+val databaseDriverVersion: String by project
 
 plugins {
 	kotlin("jvm") version "1.9.0"
@@ -25,32 +31,45 @@ repositories {
 }
 
 dependencies {
-	implementation("io.ktor:ktor-server-core-jvm:$ktor_version")
-	implementation("io.ktor:ktor-server-websockets-jvm:$ktor_version")
-	implementation("io.ktor:ktor-serialization-kotlinx-json-jvm:$ktor_version")
-	implementation("io.ktor:ktor-server-content-negotiation-jvm:$ktor_version")
-	implementation("org.postgresql:postgresql:$postgres_version")
-	implementation("com.h2database:h2:$h2_version")
-	implementation("io.ktor:ktor-server-metrics-micrometer-jvm:$ktor_version")
-	implementation("io.micrometer:micrometer-registry-prometheus:$prometeus_version")
-	implementation("io.ktor:ktor-server-metrics-jvm:$ktor_version")
-	implementation("io.ktor:ktor-server-call-logging-jvm:$ktor_version")
-	implementation("io.ktor:ktor-server-call-id-jvm:$ktor_version")
-	implementation("io.ktor:ktor-server-partial-content-jvm:$ktor_version")
-	implementation("io.ktor:ktor-server-swagger-jvm:$ktor_version")
-	implementation("io.ktor:ktor-server-openapi:$ktor_version")
-	implementation("io.ktor:ktor-server-forwarded-header-jvm:$ktor_version")
-	implementation("io.ktor:ktor-server-default-headers-jvm:$ktor_version")
-	implementation("io.ktor:ktor-server-cors-jvm:$ktor_version")
-	implementation("io.ktor:ktor-server-conditional-headers-jvm:$ktor_version")
-	implementation("io.ktor:ktor-server-compression-jvm:$ktor_version")
-	implementation("io.ktor:ktor-server-caching-headers-jvm:$ktor_version")
-	implementation("io.ktor:ktor-server-resources:$ktor_version")
-	implementation("io.ktor:ktor-server-auth-jvm:$ktor_version")
-	implementation("io.ktor:ktor-client-core-jvm:$ktor_version")
-	implementation("io.ktor:ktor-client-apache-jvm:$ktor_version")
-	implementation("io.ktor:ktor-server-netty-jvm:$ktor_version")
-	implementation("ch.qos.logback:logback-classic:$logback_version")
-	testImplementation("io.ktor:ktor-server-tests-jvm:$ktor_version")
-	testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
+	implementation("ch.qos.logback:logback-classic:$logbackVersion")
+	implementation("com.google.code.gson:gson:$gsonVersion")
+	implementation("org.mindrot:jbcrypt:$jbcryptVersion")
+	implementation("io.github.crackthecodeabhi:kreds:$redisVersion")
+	implementation("com.zaxxer:HikariCP:$hikaricpVersion")
+	implementation("com.h2database:h2:$h2Version")
+	implementation("org.jetbrains.exposed:exposed-core:$exposedVersion")
+	implementation("org.jetbrains.exposed:exposed-dao:$exposedVersion")
+	implementation("org.jetbrains.exposed:exposed-jdbc:$exposedVersion")
+	implementation("org.postgresql:postgresql:$postgresVersion")
+	implementation("io.ktor:ktor-server-core-jvm:$ktorVersion")
+	implementation("io.ktor:ktor-server-websockets-jvm:$ktorVersion")
+	implementation("io.ktor:ktor-serialization-kotlinx-json-jvm:$ktorVersion")
+	implementation("io.ktor:ktor-server-content-negotiation-jvm:$ktorVersion")
+	implementation("io.ktor:ktor-server-metrics-micrometer-jvm:$ktorVersion")
+	implementation("io.micrometer:micrometer-registry-prometheus:$prometeusVersion")
+	implementation("io.ktor:ktor-server-metrics-jvm:$ktorVersion")
+	implementation("io.ktor:ktor-server-call-logging-jvm:$ktorVersion")
+	implementation("io.ktor:ktor-server-call-id-jvm:$ktorVersion")
+	implementation("io.ktor:ktor-server-partial-content-jvm:$ktorVersion")
+	implementation("io.ktor:ktor-server-swagger-jvm:$ktorVersion")
+	implementation("io.ktor:ktor-server-openapi:$ktorVersion")
+	implementation("io.ktor:ktor-server-forwarded-header-jvm:$ktorVersion")
+	implementation("io.ktor:ktor-server-default-headers-jvm:$ktorVersion")
+	implementation("io.ktor:ktor-server-cors-jvm:$ktorVersion")
+	implementation("io.ktor:ktor-server-conditional-headers-jvm:$ktorVersion")
+	implementation("io.ktor:ktor-server-compression-jvm:$ktorVersion")
+	implementation("io.ktor:ktor-server-caching-headers-jvm:$ktorVersion")
+	implementation("io.ktor:ktor-server-resources:$ktorVersion")
+	implementation("io.ktor:ktor-server-auth-jvm:$ktorVersion")
+	implementation("io.ktor:ktor-client-core-jvm:$ktorVersion")
+	implementation("io.ktor:ktor-client-apache-jvm:$ktorVersion")
+	implementation("io.ktor:ktor-server-netty-jvm:$ktorVersion")
+	implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
+	implementation("io.ktor:ktor-server-auth:$ktorVersion")
+	implementation("io.ktor:ktor-server-status-pages:$ktorVersion")
+	implementation("io.ktor:ktor-server-auth-jwt:$ktorVersion")
+	testImplementation("io.ktor:ktor-server-tests-jvm:$ktorVersion")
+	testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlinVersion")
+	testImplementation("org.jetbrains.kotlin:kotlin-test:$kotlinVersion")
+	testImplementation("io.ktor:ktor-server-test-host-jvm:$ktorVersion")
 }
