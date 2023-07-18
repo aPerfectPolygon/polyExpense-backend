@@ -1,6 +1,6 @@
-package com.polygon.dao
+package com.polygon.utils
 
-import com.polygon.model.Users
+import com.polygon.users.model.Users
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
 import io.ktor.server.config.*

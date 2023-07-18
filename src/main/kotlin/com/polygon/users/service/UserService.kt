@@ -1,8 +1,8 @@
-package com.polygon.services
+package com.polygon.users.service
 
-import com.polygon.dao.user.UserDaoFacade
-import com.polygon.dao.user.userDAO
-import com.polygon.model.User
+import com.polygon.users.dao.UserDaoFacade
+import com.polygon.users.dao.userDAO
+import com.polygon.users.model.User
 import com.polygon.utils.Hasher
 import io.ktor.server.plugins.*
 

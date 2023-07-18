@@ -1,7 +1,7 @@
-package com.polygon.routing
+package com.polygon.users.route
 
-import com.polygon.model.User
-import com.polygon.services.UserService
+import com.polygon.users.model.User
+import com.polygon.users.service.UserService
 import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.request.*

@@ -1,9 +1,9 @@
-package com.polygon.routing
+package com.polygon.auth.route
 
 import com.auth0.jwt.JWT
 import com.auth0.jwt.algorithms.Algorithm
-import com.polygon.model.User
-import com.polygon.services.UserService
+import com.polygon.users.model.User
+import com.polygon.users.service.UserService
 import com.polygon.utils.jwtAudience
 import com.polygon.utils.jwtExpiration
 import com.polygon.utils.jwtIssuer
@@ -24,12 +24,12 @@ import java.util.*
 fun Route.authRouting(config: ApplicationConfig, userService: UserService) {
 	post("/login") {
 		val user = call.receive<User>()
-		val userStatus = userService.loginUser(user.username, user.password)
+		val userStatus = userService.loginUser(user.username.orEmpty(), user.password.orEmpty())
 		if (userStatus) {
 			call.respond(
 				buildJsonObject {
 					put("description", HttpStatusCode.OK.description)
-					put("result", Json.encodeToJsonElement(userService.userRepository.findByUsername(user.username)))
+					put("result", Json.encodeToJsonElement(userService.userRepository.findByUsername(user.username.orEmpty())))
 				}
 			)
 		} else call.respond(HttpStatusCode.Unauthorized, "username/password is wrong")

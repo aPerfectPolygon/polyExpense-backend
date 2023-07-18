@@ -1,8 +1,8 @@
 package com.polygon.plugins
 
-import com.polygon.routing.authRouting
-import com.polygon.routing.usersRouting
-import com.polygon.services.userService
+import com.polygon.auth.route.authRouting
+import com.polygon.users.route.usersRouting
+import com.polygon.users.service.userService
 import io.ktor.server.application.*
 import io.ktor.server.config.*
 import io.ktor.server.response.*

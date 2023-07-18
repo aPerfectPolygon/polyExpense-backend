@@ -1,6 +1,6 @@
 package com.polygon.utils
 
-import com.polygon.model.User
+import com.polygon.users.model.User
 import org.mindrot.jbcrypt.BCrypt
 
 object Hasher {

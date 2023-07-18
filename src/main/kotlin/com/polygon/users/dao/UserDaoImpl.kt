@@ -1,10 +1,9 @@
-package com.polygon.dao.user
+package com.polygon.users.dao
 
-import com.polygon.dao.DatabaseFactory.dbQuery
-import com.polygon.model.Notifications
-import com.polygon.model.Picture
-import com.polygon.model.User
-import com.polygon.model.Users
+import com.polygon.common.Picture
+import com.polygon.utils.DatabaseFactory.dbQuery
+import com.polygon.users.model.User
+import com.polygon.users.model.Users
 import org.jetbrains.exposed.sql.*
 
 class UserDaoImpl : UserDaoFacade {
@@ -24,7 +23,7 @@ class UserDaoImpl : UserDaoFacade {
 		),
 		notificationsRead = row[Users.notificationsRead],
 		notificationsCount = row[Users.notificationsCount],
-		notifications = Notifications(addedAsFriend = row[Users.addedAsFriend]),
+		notifications = User.Notifications(addedAsFriend = row[Users.addedAsFriend]),
 		defaultCurrency = row[Users.defaultCurrency],
 		locale = row[Users.locale],
 		token = row[Users.token]

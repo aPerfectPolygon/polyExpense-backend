@@ -1,42 +1,41 @@
-package com.polygon.model
+package com.polygon.users.model
 
-import com.google.gson.annotations.Expose
+import com.polygon.common.Picture
 import kotlinx.serialization.Serializable
 import org.jetbrains.exposed.sql.Table
 
 @Serializable
 data class User @JvmOverloads constructor(
-	@Expose val id: Long? = 0,
-	@Expose val firstName: String? = "",
-	@Expose val lastName: String? = "",
-	@Expose val username: String,
-	@Expose val password: String,
-	@Expose val email: String? = "",
-	@Expose val registrationStatus: String? = "",
-	@Expose val picture: Picture? = Picture(
-		small = "",
-		medium = "",
-		large = ""
-	),
-	@Expose val notificationsRead: String? = "",
-	@Expose val notificationsCount: Int? = 0,
-	@Expose val notifications: Notifications? = Notifications(
-		addedAsFriend = false
-	),
-	@Expose val defaultCurrency: String? = "",
-	@Expose val locale: String? = "",
-	@Expose var token: String? = ""
-)
-
-@Serializable
-data class Notifications(
-	@Expose val addedAsFriend: Boolean?
-)
-
-@Serializable
-data class Picture(
-	@Expose val small: String?, @Expose val medium: String?, @Expose val large: String?
-)
+	val id: Long? = 0,
+	val firstName: String? = "",
+	val lastName: String? = "",
+	val username: String? = "",
+	val password: String? = "",
+	val email: String? = "",
+	val registrationStatus: String? = "",
+	val picture: Picture? = Picture(),
+	val notificationsRead: String? = "",
+	val notificationsCount: Int? = 0,
+	val notifications: Notifications? = Notifications(),
+	val defaultCurrency: String? = "",
+	val locale: String? = "",
+	val balance: List<Balance?>? = listOf(),
+	val paidShare: String? = "", // 8.99
+	val owedShare: String? = "", // 4.5
+	val netBalance: String? = "", // 4.49
+	var token: String? = ""
+) {
+	@Serializable
+	data class Balance(
+		val currencyCode: String? = "", // USD
+		val amount: String? = "" // -5.02
+	)
+	
+	@Serializable
+	data class Notifications(
+		val addedAsFriend: Boolean? = false
+	)
+}
 
 object Users : Table("users") {
 	val id = long("id").autoIncrement()

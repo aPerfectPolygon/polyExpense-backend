@@ -1,6 +1,6 @@
-package com.polygon.dao.user
+package com.polygon.users.dao
 
-import com.polygon.model.User
+import com.polygon.users.model.User
 
 interface UserDaoFacade {
 	suspend fun createUser(user: User): User?
